@@ -1,0 +1,203 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+apply plugin: 'com.mob.sdk'
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+MobSDK {
+    appKey "23f2f9faac10c"
+    appSecret "2ab043b75309216320e56ce1fa4d6591"
+
+    ShareSDK {
+        //平台配置信息
+        devInfo {
+            Wechat {
+                sortId 1
+                /*appId"wx65dbe126922e0386"
+                 appSecret "e6abb5306e53b3d1099e9083d89a5263"*/
+                appId "wxa23177a56a15d5cb"
+                appSecret "2d82f0b95d068a287ab594c82f837f39"
+                shareByAppClient true
+            }
+            WechatMoments {
+                sortId 2
+                /* appId "wx65dbe126922e0386"
+                 appSecret "e6abb5306e53b3d1099e9083d89a5263"*/
+                appId "wxa23177a56a15d5cb"
+                appSecret "2d82f0b95d068a287ab594c82f837f39"
+                shareByAppClient true
+            }
+            QQ {
+                sortId 3
+                appId "1106715881"
+                appKey "8Lw28MPZJIt4h57W"
+                shareByAppClient true
+            }
+            QZone {
+                sortId 4
+                appId "1106715881"
+                appKey "8Lw28MPZJIt4h57W"
+                shareByAppClient true
+            }
+        }
+    }
+
+}
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.application.sven.huinews"
+        minSdkVersion 16
+        targetSdkVersion 27
+
+        versionCode 211
+        versionName "2.1.1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        flavorDimensions "versionCode"
+        ndk {
+            abiFilters 'armeabi'
+        }
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+    signingConfigs {
+        myConfig {
+            storeFile file('JuNews.jks')
+            storePassword '123456'
+            keyAlias 'news'
+            keyPassword '123456'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.myConfig
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField("String", "BASE_URL", "\"https://android.news.88acca.com/\"")
+            buildConfigField("String", "BASE_WEB_URL", "\"http://ah.news.88acca.com/\"")
+            // buildConfigField("String", "BASE_URL", "\"http://www.nr6h.cn/\"")
+            //buildConfigField("String", "BASE_WEB_URL", "\"http://www.aizhuifan.cn/\"")
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                  //  def fileName = "JuNews_${defaultConfig.versionName}_${releaseTime()}.apk"
+                    //渠道打包方法
+                     def fileName = "JuNews_${variant.productFlavors[0].name}_${variant.buildType.name}_${defaultConfig.versionName}_${releaseTime()}.apk"
+                    outputFileName = fileName
+                }
+            }
+        }
+
+        debug {
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.myConfig
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+           // buildConfigField("String", "BASE_URL", "\"http://www.nr6h.cn/\"")
+            //buildConfigField("String", "BASE_WEB_URL", "\"http://www.aizhuifan.cn/\"")
+            buildConfigField("String", "BASE_URL", "\"https://android.news.88acca.com/\"")
+            buildConfigField("String", "BASE_WEB_URL", "\"http://ah.news.88acca.com/\"")
+        }
+    }
+    buildToolsVersion '27.0.3'
+    productFlavors {
+        //生成渠道包的同时需要在友盟后台新增相应渠道的包名
+       /* vi {} //视频分享
+        st {} //收徒分享
+        wq {} //qq群
+        we {} //微信公众号
+        sm {} //自媒体
+        oldu {} //老用户
+        newu {} //新用户
+        xs {} //小说
+        qq {} //应用宝
+        xiaomi {}// 小米
+        huawei {}//华为*/
+        tsj {} //官方
+        productFlavors.all { flavor ->
+            flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+        }
+    }
+
+    sourceSets.main {
+        jniLibs.srcDirs = ['libs']  // <-- Set your folder here!
+    }
+}
+
+
+
+repositories {
+    maven { url "https://jitpack.io" }
+    flatDir {
+        dirs 'libs' //this way we can find the .aar file in libs folder
+    }
+}
+
+
+
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27+'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support:design:27+'
+    implementation 'com.android.support:cardview-v7:27+'
+    //eventbus
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    //gilde
+    implementation 'com.github.bumptech.glide:glide:4.6.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
+    //tablayuot
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    //GSYVideoPlayer
+    // implementation 'com.shuyu:GSYVideoPlayer:4.1.2'
+    //flowLayout
+    implementation 'com.hyman:flowlayout-lib:1.1.2'
+    //jsbridge
+    implementation 'com.github.lzyzsd:jsbridge:1.0.4'
+    //rxjava
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.14-RC1'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.0.0'
+    //okhttp3 log
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    //dueeeke videoplayer
+    implementation project(':dkplayer-java')
+    //SmartRefreshLayout
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-7'
+    //fresco
+    implementation 'com.facebook.fresco:fresco:1.8.1'
+    //divideritemdecoration
+    implementation 'com.yanyusong.y_divideritemdecoration:y_divideritemdecoration:2.0'
+    //m3u8 manger
+    implementation 'com.jwkj:M3U8Manger:v2.3.0'
+    implementation files('libs/Baidu_MobAds_SDK.jar')
+    implementation files('libs/GDTUnionSDK.TBS.4.17.568.min.jar')
+    // implementation files('libs/KuaiyanSdkFixRelease_V2.0.4.jar')
+    implementation 'com.umeng.sdk:analytics:7.5.0'
+    implementation 'com.android.support:multidex:1.0.0'
+    implementation 'com.github.iwgang:countdownview:2.1.6'
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    implementation 'org.jsoup:jsoup:1.11.3'
+    implementation 'org.jetbrains:annotations-java5:15.0'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    //  implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.4'
+    //PushSDK必须依赖基础组件库，所以需要加入对应依赖
+    implementation 'com.umeng.sdk:common:1.5.3'
+    //PushSDK必须依赖utdid库，所以需要加入对应依赖
+    implementation 'com.umeng.sdk:utdid:1.1.5.3'
+    //PushSDK
+    implementation 'com.umeng.sdk:push:4.2.0'
+}

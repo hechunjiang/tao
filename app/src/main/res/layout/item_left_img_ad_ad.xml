@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
+    android:orientation="horizontal">
+
+
+    <FrameLayout
+        android:id="@+id/express_ad_container"
+        android:layout_width="133dp"
+        android:layout_height="75dp" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:visibility="visible"
+        android:layout_toRightOf="@+id/express_ad_container"
+        android:ellipsize="end"
+        android:maxEms="20"
+        android:maxLines="2"
+        android:text="二哈不想跟主人分享沙发，怒视主人吗？竟做出这样的举动"
+        android:textColor="@color/c_333333"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:layout_alignBottom="@+id/express_ad_container"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/express_ad_container"
+        android:text="再见亦是泪"
+        android:textColor="@color/c_999999"
+        android:textSize="13sp" />
+
+</RelativeLayout>
+

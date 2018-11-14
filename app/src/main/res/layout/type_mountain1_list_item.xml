@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/iv_thumb"
+        android:layout_width="match_parent"
+        android:layout_height="167dp"
+        fresco:actualImageScaleType="centerCrop"
+        fresco:placeholderImage="@drawable/img_load"
+        fresco:placeholderImageScaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/banner_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="王牌对王牌 第三季"
+        android:textColor="@color/c_333333"
+        android:textSize="16sp" />
+</LinearLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:fitsSystemWindows="true"
+
+    android:orientation="vertical">
+
+    <com.application.sven.huinews.view.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.application.sven.huinews.view.TitleBar>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.application.sven.huinews.view.RefreshLayout
+            android:id="@+id/refresh_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/follow_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"></android.support.v7.widget.RecyclerView>
+        </com.application.sven.huinews.view.RefreshLayout>
+
+        <com.application.sven.huinews.view.EmptyLayout
+            android:id="@+id/mEmptyLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></com.application.sven.huinews.view.EmptyLayout>
+    </FrameLayout>
+</LinearLayout>

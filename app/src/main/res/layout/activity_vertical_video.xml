@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_black"
+    android:orientation="vertical">
+
+
+    <com.application.sven.huinews.view.VerticalViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.application.sven.huinews.view.VerticalViewPager>
+
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:background="@android:color/transparent"
+        android:src="@mipmap/icon_back_white" />
+
+    <RelativeLayout
+        android:id="@+id/video_progress_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="67dp"
+        android:layout_marginRight="10dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/video_collin_bg" />
+
+        <com.application.sven.huinews.view.MyVideoProgress
+            android:id="@+id/video_progress"
+            android:layout_width="46.5dp"
+            android:layout_height="46.5dp"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_gold_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/video_progress_layout"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:text="+10金币"
+        android:textColor="#FEDE5B"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+
+    <ProgressBar
+        android:id="@+id/loading"
+        style="@android:style/Widget.Holo.ProgressBar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+    <include layout="@layout/video_list_coment_view" />
+
+</RelativeLayout>

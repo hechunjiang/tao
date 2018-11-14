@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.application.sven.huinews">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 以下为可选权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
+    <application
+        android:name=".AppConfig"
+        android:allowBackup="true"
+        android:icon="@mipmap/news_logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar"
+        tools:replace="android:name">
+        <activity
+            android:name=".main.welcome.activity.SplashActivity"
+            android:label="@string/app_name"
+            android:theme="@style/welcome_theme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".main.welcome.activity.GuideActivity" />
+        <activity android:name=".main.home.activity.MainActivity" />
+        <activity android:name=".main.preemption.activity.MoreMovieActivity" />
+        <activity
+            android:name=".main.preemption.activity.MovieDetailsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" />
+        <activity android:name=".main.home.activity.UserInfoActivity" />
+        <activity android:name=".main.my.activity.HistoryVideoActivity" />
+        <activity android:name=".main.my.activity.CollectionActivity" />
+        <activity android:name=".main.my.activity.FollowActivity" />
+        <activity android:name=".main.my.activity.DownloadActivity" />
+        <activity android:name=".main.video.activity.VerticalVideoActivity" />
+        <activity android:name=".main.video.activity.HorizontalVideoActivity" />
+        <!--android:windowSoftInputMode="adjustResize"-->
+        <activity android:name=".main.search.activity.SearchActivity" />
+        <activity android:name=".main.my.activity.SettingActivity" />
+        <activity android:name=".main.web.activity.WebActivity" />
+        <activity android:name=".main.login.activity.LoginActivity" />
+        <activity android:name=".main.login.activity.RegisterActivity" />
+        <activity android:name=".main.login.activity.FindPwdActivity" />
+        <activity android:name=".main.login.activity.BindActivity" />
+        <activity android:name=".main.read.activity.CatalogActivity" />
+        <activity android:name=".main.read.activity.BookFreeActivity" />
+        <activity android:name=".main.read.activity.BookUpdateActivity" />
+        <activity android:name=".main.read.activity.BookDetailsActivity" />
+        <activity android:name=".main.read.activity.BookStoreActivity" />
+        <activity android:name=".main.search.activity.SearchBookActivity" />
+        <activity
+            android:name=".main.read.activity.BookReadActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.FullScreen"></activity>
+
+
+        <activity android:name=".main.my.activity.PayInfoActivity" />
+        <activity android:name=".main.read.activity.BookShelfActivity">
+
+        </activity>
+        <activity
+            android:name=".main.home.activity.VideoDetailsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" />
+
+        <!--  <activity
+              android:name=".main.read.activity.ReadActivity"
+              android:hardwareAccelerated="false"
+              android:screenOrientation="portrait"
+              android:theme="@style/AppTheme.NoActionBar.FullScreen"/>-->
+
+
+        <!-- 微信回调 -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/wxStyle">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="wxa23177a56a15d5cb" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent" />
+
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="ratio_float" />
+
+        <!-- 自定义nav标题textview颜色 -->
+        <meta-data
+            android:name="aiclk_override_adbrowser_btitle_text_color"
+            android:value="000000" />
+        <!-- 自定义nav“关闭”字样颜色 -->
+        <meta-data
+            android:name="aiclk_override_adbrowser_tvclose_text_color"
+            android:value="000000" />
+        <!-- 自定义nav返回按钮颜色 -->
+        <meta-data
+            android:name="aiclk_override_adbrowser_tvback_text_color"
+            android:value="FF5645" />
+
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.application.sven.huinews.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+
+        <!-- 百度mob -->
+        <meta-data
+            android:name="BaiduMobAd_APP_ID"
+            android:value="d7ed7fb5" />
+
+        <activity
+            android:name="com.baidu.mobads.AppActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <provider
+            android:name="com.baidu.mobads.openad.FileProvider"
+            android:authorities="${packageName}.bd.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/bd_file_paths" />
+        </provider>
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5ab86007f43e481294000090" />
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="d60fc728f1e7ff64b82347d2eedf9b8c" />
+        <meta-data
+            android:name="CHANNEL_NAME"
+            android:value="${UMENG_CHANNEL_VALUE}" />
+
+        <!-- 腾讯广点通 -->
+        <service
+            android:name="com.qq.e.comm.DownloadService"
+            android:exported="false" />
+        <activity
+            android:name="com.qq.e.ads.ADActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+
+        <!-- 快眼 配置 start -->
+        <activity
+            android:name="com.wmcsk.dl.dl.DLProxyFragmentActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar">
+            <intent-filter>
+                <action android:name="core.dl.proxy.fragmentactivity.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.wmcsk.dl.dl.DLTranslucentProxyActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="core.dl.proxy.activity.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.wmcsk.dl.dl.DLProxyActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="core.dl.proxy.activity.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!--singleTask模式的代理activity,只能给一个activity使用-->
+        <activity
+            android:name="com.wmcsk.dl.dl.DLSingleTaskProxyActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="core.dl.proxy.activity.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <receiver android:name="com.wmcsk.dl.dl.DLReceiver">
+            <intent-filter>
+                <action android:name="com.wmcsk.reciver"></action>
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.wmcsk.dl.dl.DLProxyService" />
+        <service android:name="com.wmcsk.dl.dl.DLProxyServiceOne" />
+        <service android:name="com.wmcsk.dl.dl.DLProxyServiceTwo" />
+        <service android:name="sdkshell.kuaiyan.com.kuaiyansdk.PluginService"></service>
+        <!-- 快眼配置  end -->
+
+        <!--  <meta-data
+              android:name="com.taobao.android.hotfix.IDSECRET"
+              android:value="24991358" />
+          <meta-data
+              android:name="com.taobao.android.hotfix.APPSECRET"
+              android:value="2d2e0fef5f14c9fcdfb02167476d38bd" />
+          <meta-data
+              android:name="com.taobao.android.hotfix.RSASECRET"
+              android:value="MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCGNdWs4zbeXutZu/W9VlZD5RP/GbL1PXVonjovw3YFjA4EEgNiL2VIh/sPsCOu8udN7HqTUbSOXwSg066lMV4VFp+y8hGP+Axs1u49wnaKnLkch2ORNa6VygbyG6a0LLT0M1F52cEM8my6xUIsbqMOvxVGrDCY6BP3PVDoiiQIeurZWRFTzijvlhx9ZBDwmTrOabfKVYEA69QDErhixvEPFKETsfRIuxsLYJhZeaM4rqdNS71oieCEBFOLjXVtw1L5ISll8p6h4SjdU/43JgXrJ04YOEK0oYqsI8YANPQN1/JgnzbEvpEkY5yzxQbAfSO+8KyaunfLwOhQP/ByHmtVAgMBAAECggEAEgb7K5zdiuMPE9+Wc5c8QSRtGi/2hNB7i9DtGetUWAxm+Y7921tobGSviXzsXhyMiz//evhXm2QR+BRW+iN2cri2PNAdIcx8xsXb/Hm5eIbyqm1ZJ3EhgUdAxZaHPt5edArMn+Rq9PU/O5sxd0xpJJrwHa0VXgSWYfhffMzJaEYANhOHBNWH2Z+A8YBUGZliMJdZ4abbAi4TqJEt+oPjRoRfoywB1IiNPoT17PqjGaJpFzCXS0nuK8cDJrViH4ehJXBJCiMDgGIR5hBbh44HpZ6Nn0Zu2R1VnMysGgP6XkuWoAHtORxq8q5k6tAcEkqE8DaeMmI3clXV7t5YIqFXoQKBgQDT19x/iroazyeISZC8jpqIzXrI6b31jVdaC9Xgin6msAlCYxThOtpGQ1rGiEHpE9XXErdNjsXHA1PAChT9ncbBvIAoTd5xaDTa9JpGMxjMYLpktHjgmc0k7ULpSSJQrQJR4/AWdlLPQCyyN48zrTRvfgTm9N/PM6j9m05YRmt6KQKBgQCiL2nAVWhA/CDqizS7xJC/CFzCHx+uyKsinefS0p2P5GQXbPPSrqftF0qkMOC26HW+EJicSjc3yNWZL0WrHSVKRvgd9Y7hQRJ1Kh8FDc59vvCcy5gey6MGnidqYLMu5qMsdzNosBXZtLcd3YO0744sBFQ/hrm2+SDlIcG6G+TlTQKBgBKQVPs8PejBhHZV9AACAxq/3uWiTgopk6EJbnmZyVV0EaumoRrHnH8Rwe+p2xTArzmEo1mBjGVPLlSizYoX/GXXzec6Q6buectCKg7CxYaLZ2oRwpH0CF0XCYkF5qLpNk3UyqI9Ri5xMjl/0uW1ZOXsRiOzC7XNkh5/MJNdwGdZAoGASiClkxT2O42BdfH+PjwPdGDcFJWpI3fwUDgf9wnwng3jeZmAr7DIa+MTaIw2iSMifaaUOgrpxgNzLTqf+x+tJY/eY8MSdP4K86Y221Z+JJca3m9nrduhPasXlNVx0GP1/KLWymiA9CpW772JLy+2qYOpBggL5gdj85ZEN038hpkCgYB7tsHbv0VQXM8EIzKgqD8Fv/CgS+ECKSk2FuuEA/DcezH1gwhVD+UUk9L7Ck2HCzHSz4wg28xKfJM4IAFQjmGv6kl3O/Lg4807MS2/gi+XDT4+1CNAe2WH3h5ijwXWZnASe7MhMQB7p8IlO+Qqin3emiyOtzJpl/BceqSB3te4pA==" />
+    -->
+    </application>
+
+</manifest>

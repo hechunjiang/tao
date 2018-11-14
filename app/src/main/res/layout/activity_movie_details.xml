@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/video_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.application.sven.huinews.view.video.ListIjkVideoView
+            android:id="@+id/player"
+            android:layout_width="match_parent"
+            android:layout_height="202dp" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/iv_thumb"
+            android:layout_width="match_parent"
+            android:layout_height="202dp"
+            android:visibility="gone"
+            fresco:actualImageScaleType="fitXY"
+            fresco:placeholderImage="@drawable/img_load"
+            fresco:placeholderImageScaleType="fitXY" />
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:src="@mipmap/icon_back_white" />
+
+        <ImageButton
+            android:id="@+id/btn_share"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:background="@android:color/transparent"
+            android:src="@mipmap/share"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/def_pro"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:visibility="visible"
+            android:indeterminateDrawable="@drawable/video_loading"
+            />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/video_view">
+
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="23dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/movie_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/c_333333"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/movie_tostar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        android:textColor="@color/c_999999"
+                        android:textSize="13sp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_movie_dis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:ellipsize="end"
+                        android:lineSpacingExtra="3dp"
+                        android:maxLines="2"
+                        android:textColor="@color/c_999999"
+                        android:textSize="13sp" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_play"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@mipmap/icon_eye3"
+                            android:drawablePadding="4dp"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="30"
+                            android:textColor="@color/c_333333"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/btn_collection"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:drawableLeft="@mipmap/movie_collection"
+                            android:drawablePadding="4dp"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="@string/collection"
+                            android:textColor="@color/c_333333"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/tv_download"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:drawableLeft="@mipmap/icon_down"
+                            android:drawablePadding="4dp"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="@string/download"
+                            android:textColor="@color/c_333333"
+                            android:textSize="15sp"
+                            android:visibility="gone" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:id="@+id/movie_num"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/select_movie"
+                                android:textColor="@color/c_333333"
+                                android:textSize="17sp" />
+
+                            <TextView
+                                android:id="@+id/btn_select_movie"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|center_vertical"
+                                android:drawablePadding="4dp"
+                                android:drawableRight="@mipmap/next"
+                                android:gravity="center"
+                                android:textColor="@color/c_999999"
+                                android:textSize="15sp"
+                                tool:text="共30集" />
+                        </FrameLayout>
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/select_movie_rv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:overScrollMode="never"></android.support.v7.widget.RecyclerView>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ad_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"></RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="23dp"
+                        android:text="@string/recommended_for_you"
+                        android:textColor="@color/c_333333"
+                        android:textSize="17sp" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recommend_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:overScrollMode="never"></android.support.v7.widget.RecyclerView>
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/loading_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_white"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <ProgressBar
+                android:id="@+id/loading"
+                style="@android:style/Widget.Holo.ProgressBar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:visibility="visible" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <include layout="@layout/movie_count_select_view" />
+
+    <include layout="@layout/movie_count_select_download_view" />
+</RelativeLayout>
